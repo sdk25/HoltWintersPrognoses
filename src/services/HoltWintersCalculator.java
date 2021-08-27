@@ -1,4 +1,4 @@
-package holtwinters;
+package services;
 
 public class HoltWintersCalculator {
 

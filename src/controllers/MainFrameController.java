@@ -1,4 +1,4 @@
-package holtwinters;
+package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
+import services.HoltWintersCalculator;
 
 import java.io.File;
 import java.io.FileReader;
@@ -20,10 +21,9 @@ import java.io.Reader;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.stream.Stream;
 
 
-public class Controller implements Initializable {
+public class MainFrameController implements Initializable {
 	@FXML private LineChart<Integer, Double> plot;
 
 	@FXML private TextField kCoef;
@@ -155,7 +155,7 @@ public class Controller implements Initializable {
 		Properties properties = new Properties();
 		try (Reader reader = file.exists()
 				? new FileReader(file)
-				: new InputStreamReader(getClass().getResourceAsStream(file.getName())) ) {
+				: new InputStreamReader(getClass().getClassLoader().getResourceAsStream(file.getName())) ) {
 
 			properties.load(reader);
 
